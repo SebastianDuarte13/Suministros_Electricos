@@ -44,3 +44,7 @@ Este proyecto tiene como objetivo principal el desarrollo de un sistema de gesti
      Administrar pedidos pendientes, con la capacidad de actualizarlos conforme se cumplan.
 * ### Reportes:
      Generar reportes sobre ventas, clientes y productos, que permitan una mejor toma de decisiones.
+
+# Esta es la base de datos realizada
+
+![Database_Proyect](/src/main/resources/images/database_proyect.jpg)
