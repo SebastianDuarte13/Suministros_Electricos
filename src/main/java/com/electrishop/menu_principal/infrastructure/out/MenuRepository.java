@@ -19,6 +19,8 @@ public class MenuRepository extends javax.swing.JFrame {
      */
     public MenuRepository() {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
     }
 
     /**

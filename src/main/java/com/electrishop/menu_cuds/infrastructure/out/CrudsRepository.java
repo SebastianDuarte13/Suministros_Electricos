@@ -4,6 +4,14 @@
  */
 package com.electrishop.menu_cuds.infrastructure.out;
 
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
+// importaciones de tabla categoria
+import com.electrishop.categorias.application.CreateCategoriaUseCase;
+import com.electrishop.categorias.domain.service.CategoriaService;
+import com.electrishop.categorias.infrastructure.out.CategoriaRepository;
+import com.electrishop.categorias.infrastructure.in.CategoriaController;
 /**
  *
  * @author Sebastian Duarte
@@ -211,6 +219,15 @@ public class CrudsRepository extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // categorias
+        // Crear las dependencias necesarias
+        CategoriaService categoriaService = new CategoriaRepository(); // Repositorio que implementa el servicio
+        CreateCategoriaUseCase createCategoriaUseCase = new CreateCategoriaUseCase(categoriaService);
+
+        // Crear el controlador y pasarle el caso de uso
+        CategoriaController categoriaController = new CategoriaController(createCategoriaUseCase, categoriaService);
+
+        // Iniciar la interacción con el usuario
+        categoriaController.tabla_RespondeQuestion();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -254,7 +271,10 @@ public class CrudsRepository extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // regresar al menu
+        // Get the parent frame or dialog
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        // Close the frame or dialog
+        frame.dispose();
     }//GEN-LAST:event_jButton12ActionPerformed
 
 
