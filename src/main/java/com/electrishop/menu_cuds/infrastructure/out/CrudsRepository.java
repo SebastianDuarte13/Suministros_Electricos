@@ -12,6 +12,13 @@ import com.electrishop.categorias.application.CreateCategoriaUseCase;
 import com.electrishop.categorias.domain.service.CategoriaService;
 import com.electrishop.categorias.infrastructure.out.CategoriaRepository;
 import com.electrishop.categorias.infrastructure.in.CategoriaController;
+
+//importaciones tabla paises
+import com.electrishop.pais.application.CreatePaisUseCase;
+import com.electrishop.pais.domain.service.PaisService;
+import com.electrishop.pais.infrastructure.out.PaisRepository;
+import com.electrishop.pais.infrastructure.in.PaisController;
+
 /**
  *
  * @author Sebastian Duarte
@@ -66,7 +73,7 @@ public class CrudsRepository extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI", 3, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(51, 51, 51));
-        jButton2.setText("Clientes");
+        jButton2.setText("paises");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -235,7 +242,17 @@ public class CrudsRepository extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // clientes
+        // boton tabla paises
+        
+        // // Crear las dependencias necesarias
+        PaisService paisService = new PaisRepository(); // Repositorio que implementa el servicio
+        CreatePaisUseCase createPaisUseCase = new CreatePaisUseCase(paisService);
+
+        // Crear el controlador y pasarle el caso de uso
+        PaisController paisController = new PaisController(createPaisUseCase);
+
+        // Iniciar la interacción con el usuario
+        paisController.tabla_pais();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
