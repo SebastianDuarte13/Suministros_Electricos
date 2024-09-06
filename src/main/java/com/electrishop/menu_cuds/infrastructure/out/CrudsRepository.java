@@ -19,6 +19,12 @@ import com.electrishop.pais.domain.service.PaisService;
 import com.electrishop.pais.infrastructure.out.PaisRepository;
 import com.electrishop.pais.infrastructure.in.PaisController;
 
+//importaciones tabla direccion clientes
+import com.electrishop.direccioncliente.application.CreateDireccionUseCase;
+import com.electrishop.direccioncliente.domain.service.DireccionService;
+import com.electrishop.direccioncliente.infrastructure.out.DireccionRepository;
+import com.electrishop.direccioncliente.infrastructure.in.DireccionController;
+
 /**
  *
  * @author Sebastian Duarte
@@ -81,7 +87,7 @@ public class CrudsRepository extends javax.swing.JPanel {
         });
 
         jButton3.setFont(new java.awt.Font("Yu Gothic UI", 3, 14)); // NOI18N
-        jButton3.setText("Proveedores");
+        jButton3.setText("direccion cliente");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -256,7 +262,16 @@ public class CrudsRepository extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // proveedores
+        // direccion cliente
+         // // Crear las dependencias necesarias
+         DireccionService direccionService = new DireccionRepository(); // Repositorio que implementa el servicio
+         CreateDireccionUseCase createDireccionUseCase = new CreateDireccionUseCase(direccionService);
+ 
+         // Crear el controlador y pasarle el caso de uso
+         DireccionController direccionController = new DireccionController(createDireccionUseCase);
+ 
+         // Iniciar la interacción con el usuario
+         direccionController.tabla_direccioncliente();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

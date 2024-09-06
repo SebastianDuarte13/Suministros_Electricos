@@ -131,7 +131,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI" size="14" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Proveedores"/>
+        <Property name="text" type="java.lang.String" value="direccion cliente"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
