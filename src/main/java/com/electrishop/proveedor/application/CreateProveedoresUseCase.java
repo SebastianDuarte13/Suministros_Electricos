@@ -11,6 +11,6 @@ public class CreateProveedoresUseCase {
     }
 
     public void execute(Proveedores proveedores) {
-        proveedoresService.CreateProvedores(proveedores);
+        proveedoresService.CreateProveedores(proveedores);
     }
 }

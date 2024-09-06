@@ -25,6 +25,12 @@ import com.electrishop.direccioncliente.domain.service.DireccionService;
 import com.electrishop.direccioncliente.infrastructure.out.DireccionRepository;
 import com.electrishop.direccioncliente.infrastructure.in.DireccionController;
 
+// importaciones tabla proveedores
+import com.electrishop.proveedor.application.CreateProveedoresUseCase;
+import com.electrishop.proveedor.domain.service.ProveedoresService;
+import com.electrishop.proveedor.infrastructure.in.ProveedoresController;
+import com.electrishop.proveedor.infrastructure.out.ProveedoresRepository;
+
 /**
  *
  * @author Sebastian Duarte
@@ -95,7 +101,7 @@ public class CrudsRepository extends javax.swing.JPanel {
         });
 
         jButton4.setFont(new java.awt.Font("Yu Gothic UI", 3, 14)); // NOI18N
-        jButton4.setText("Productos");
+        jButton4.setText("proveedores");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -275,6 +281,17 @@ public class CrudsRepository extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // Crear la instancia del repositorio que maneja la base de datos
+        ProveedoresService proveedoresService = new ProveedoresRepository();
+
+        // Crear el caso de uso para crear proveedores
+        CreateProveedoresUseCase createProveedoresUseCase = new CreateProveedoresUseCase(proveedoresService);
+
+        // Crear el controlador que maneja la lógica de interacción con el usuario
+        ProveedoresController proveedoresController = new ProveedoresController(createProveedoresUseCase, proveedoresService);
+
+        // Iniciar el controlador
+        proveedoresController.tabla_proveedor();
         // productos
     }//GEN-LAST:event_jButton4ActionPerformed
 
