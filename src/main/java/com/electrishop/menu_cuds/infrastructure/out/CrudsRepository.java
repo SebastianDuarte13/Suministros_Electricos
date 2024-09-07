@@ -32,11 +32,22 @@ import com.electrishop.proveedor.infrastructure.in.ProveedoresController;
 import com.electrishop.proveedor.infrastructure.out.ProveedoresRepository;
 
 //importaciones tabla clientes
-
 import com.electrishop.clientes.application.CreateClientesUseCase;
 import com.electrishop.clientes.domain.service.ClientesService;
 import com.electrishop.clientes.infrastructure.in.ClientesController;
 import com.electrishop.clientes.infrastructure.out.ClientesRepository;
+
+//importaciones tabla Productos
+import com.electrishop.productos.application.CreateProductosUseCase;
+import com.electrishop.productos.domain.service.ProductosService;
+import com.electrishop.productos.infrastructure.in.ProductosController;
+import com.electrishop.productos.infrastructure.out.ProductosRepository;
+
+//importaciones tabla Productos
+import com.electrishop.ciudad.application.CreateCiudadUseCase;
+import com.electrishop.ciudad.domain.service.CiudadService;
+import com.electrishop.ciudad.infrastructure.in.CiudadController;
+import com.electrishop.ciudad.infrastructure.out.CiudadRepository;
 
 /**
  *
@@ -124,7 +135,7 @@ public class CrudsRepository extends javax.swing.JPanel {
         });
 
         jButton6.setFont(new java.awt.Font("Yu Gothic UI", 3, 14)); // NOI18N
-        jButton6.setText("Detalles Compras");
+        jButton6.setText("Productos");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -132,7 +143,7 @@ public class CrudsRepository extends javax.swing.JPanel {
         });
 
         jButton7.setFont(new java.awt.Font("Yu Gothic UI", 3, 14)); // NOI18N
-        jButton7.setText("Inventario");
+        jButton7.setText("Ciudad");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -201,7 +212,7 @@ public class CrudsRepository extends javax.swing.JPanel {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -237,7 +248,7 @@ public class CrudsRepository extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addComponent(jButton12)
                 .addGap(19, 19, 19))
         );
@@ -258,6 +269,15 @@ public class CrudsRepository extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // detalles_compra
+        // Crear las dependencias necesarias
+        ProductosService productosService = new ProductosRepository(); // Repositorio que implementa el servicio
+        CreateProductosUseCase createProductosUseCase = new CreateProductosUseCase(productosService);
+
+        // Crear el controlador y pasarle el caso de uso
+        ProductosController productosController = new ProductosController(createProductosUseCase, productosService);
+
+        // Iniciar la interacción con el usuario
+        productosController.tabla_Productos();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -318,7 +338,16 @@ public class CrudsRepository extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // inventario
+        // ciudad
+         // Crear las dependencias necesarias
+         CiudadService ciudadService = new CiudadRepository(); // Repositorio que implementa el servicio
+         CreateCiudadUseCase createCiudadUseCase = new CreateCiudadUseCase(ciudadService);
+ 
+         // Crear el controlador y pasarle el caso de uso
+         CiudadController ciudadController = new CiudadController(createCiudadUseCase, ciudadService);
+ 
+         // Iniciar la interacción con el usuario
+         ciudadController.tabla_Ciudad();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed

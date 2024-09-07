@@ -15,6 +15,7 @@ public class Productos {
         this.precio_producto = precio_producto;
         this.id_categoria = id_categoria;
     }
+
     public int getId_producto() {
         return id_producto;
     }

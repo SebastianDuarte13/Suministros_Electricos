@@ -35,7 +35,7 @@
                   <Component id="jButton5" min="-2" pref="137" max="-2" attributes="0"/>
                   <Component id="jButton8" min="-2" pref="137" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="44" max="32767" attributes="0"/>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jButton11" max="32767" attributes="0"/>
                   <Component id="jButton3" alignment="1" max="32767" attributes="0"/>
@@ -79,7 +79,7 @@
                   <Component id="jButton11" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="jButton10" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="51" max="32767" attributes="0"/>
+              <EmptySpace pref="133" max="32767" attributes="0"/>
               <Component id="jButton12" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
@@ -164,7 +164,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI" size="14" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Detalles Compras"/>
+        <Property name="text" type="java.lang.String" value="Productos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
@@ -175,7 +175,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI" size="14" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Inventario"/>
+        <Property name="text" type="java.lang.String" value="Ciudad"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>

@@ -9,7 +9,7 @@ import com.electrishop.infrastructure.config.DatabaseConfig;
 import com.electrishop.productos.domain.entity.Productos;
 import com.electrishop.productos.domain.service.ProductosService;
 
-public class ProductosRepository implements ProductosService{
+public class ProductosRepository implements ProductosService {
 
     @Override
     public Productos FindProductosById(int id_producto) {
@@ -51,14 +51,30 @@ public class ProductosRepository implements ProductosService{
 
     @Override
     public void UpdateProductos(Productos productos) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'UpdateProductos'");
+        String sql = "UPDATE productos SET nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, id_categoria = ? WHERE id_producto = ?";
+        try (Connection connection = DatabaseConfig.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, productos.getNombre_producto());
+            statement.setString(2, productos.getDescripcion_producto());
+            statement.setBigDecimal(3, productos.getPrecio_producto());
+            statement.setInt(4, productos.getId_categoria());
+            statement.setInt(5, productos.getId_producto()); // Fijar el valor del ID
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void DeleteProductos(int id_producto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'DeleteProductos'");
+        String sql = "DELETE FROM productos WHERE id_producto = ?";
+        try (Connection connection = DatabaseConfig.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id_producto);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
