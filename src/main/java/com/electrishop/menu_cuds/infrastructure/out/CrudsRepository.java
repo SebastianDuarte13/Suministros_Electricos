@@ -31,6 +31,13 @@ import com.electrishop.proveedor.domain.service.ProveedoresService;
 import com.electrishop.proveedor.infrastructure.in.ProveedoresController;
 import com.electrishop.proveedor.infrastructure.out.ProveedoresRepository;
 
+//importaciones tabla clientes
+
+import com.electrishop.clientes.application.CreateClientesUseCase;
+import com.electrishop.clientes.domain.service.ClientesService;
+import com.electrishop.clientes.infrastructure.in.ClientesController;
+import com.electrishop.clientes.infrastructure.out.ClientesRepository;
+
 /**
  *
  * @author Sebastian Duarte
@@ -109,7 +116,7 @@ public class CrudsRepository extends javax.swing.JPanel {
         });
 
         jButton5.setFont(new java.awt.Font("Yu Gothic UI", 3, 14)); // NOI18N
-        jButton5.setText("Compras");
+        jButton5.setText("clientes");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -296,7 +303,18 @@ public class CrudsRepository extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // compra
+        // Crear la instancia del repositorio que maneja la base de datos
+        ClientesService clientesService = new ClientesRepository();
+
+        // Crear el caso de uso para crear proveedores
+        CreateClientesUseCase createClientesUseCase = new CreateClientesUseCase(clientesService);
+
+        // Crear el controlador que maneja la lógica de interacción con el usuario
+        ClientesController clientesController = new ClientesController(createClientesUseCase, clientesService);
+
+        // Iniciar el controlador
+        clientesController.tabla_Clientes();
+        // clientes
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
