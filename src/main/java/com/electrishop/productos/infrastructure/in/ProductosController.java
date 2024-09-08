@@ -1,4 +1,4 @@
-package com.electrishop.productos.infrastructure.in;
+   package com.electrishop.productos.infrastructure.in;
 
 import java.math.BigDecimal;
 

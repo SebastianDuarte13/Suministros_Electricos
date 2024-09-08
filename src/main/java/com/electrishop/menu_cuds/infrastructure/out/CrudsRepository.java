@@ -49,6 +49,12 @@ import com.electrishop.ciudad.domain.service.CiudadService;
 import com.electrishop.ciudad.infrastructure.in.CiudadController;
 import com.electrishop.ciudad.infrastructure.out.CiudadRepository;
 
+//importaciones tabla compra 
+import com.electrishop.compra.application.CreateCompraUseCase;
+import com.electrishop.compra.domain.service.CompraService;
+import com.electrishop.compra.infrastructure.in.CompraController;
+import com.electrishop.compra.infrastructure.out.CompraRepository;
+
 /**
  *
  * @author Sebastian Duarte
@@ -151,7 +157,7 @@ public class CrudsRepository extends javax.swing.JPanel {
         });
 
         jButton8.setFont(new java.awt.Font("Yu Gothic UI", 3, 14)); // NOI18N
-        jButton8.setText("Ventas");
+        jButton8.setText("Compra");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -351,7 +357,15 @@ public class CrudsRepository extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // ventas
+        // compra
+        CompraService compraService = new CompraRepository(); // Implementación del repositorio
+        CreateCompraUseCase createCompraUseCase = new CreateCompraUseCase(compraService); // Caso de uso
+
+        // Crear el controlador de compra
+        CompraController compraController = new CompraController(createCompraUseCase, compraService);
+
+        // Mostrar el menú de gestión de compras
+        compraController.tabla_Compra();  // Inicia el menú
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
