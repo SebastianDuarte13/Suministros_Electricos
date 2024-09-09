@@ -74,6 +74,19 @@ import com.electrishop.inventario.domain.service.InventarioService;
 import com.electrishop.inventario.infrastructure.in.InventarioController;
 import com.electrishop.inventario.infrastructure.out.InventarioRepository;
 
+// imporaciones tabla bodega
+import com.electrishop.bodega.application.CreateBodegaUseCase;
+import com.electrishop.bodega.domain.service.BodegaService;
+import com.electrishop.bodega.infrastructure.in.BodegaController;
+import com.electrishop.bodega.infrastructure.out.BodegaRepository;
+
+
+// importaciones tabla ventas
+
+import com.electrishop.ventas.application.CreateVentaUseCase;
+import com.electrishop.ventas.infrastructure.in.VentaController;
+import com.electrishop.ventas.infrastructure.out.VentaRepository;
+
 /**
  *
  * @author Sebastian Duarte
@@ -94,6 +107,7 @@ public class CrudsRepository extends javax.swing.JPanel {
      */
     @SuppressWarnings("")
     // unchecked
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -278,14 +292,13 @@ public class CrudsRepository extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
@@ -352,30 +365,45 @@ public class CrudsRepository extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton13ActionPerformed
+        VentaRepository ventaRepository = new VentaRepository();
+        CreateVentaUseCase createVentaUseCase = new CreateVentaUseCase(ventaRepository);
+        VentaController ventaController = new VentaController(createVentaUseCase, ventaRepository);
+
+        ventaController.tabla_Ventas();
         // ventas
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }// GEN-LAST:event_jButton13ActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton14ActionPerformed
         // detalles venta
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }// GEN-LAST:event_jButton14ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton15ActionPerformed
         // bodega
-     
-    }//GEN-LAST:event_jButton15ActionPerformed
+        // Instancia del repositorio
+        BodegaService bodegaService = new BodegaRepository();
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // Caso de uso para crear bodegas
+        CreateBodegaUseCase createBodegaUseCase = new CreateBodegaUseCase(bodegaService);
+
+        // Controlador que maneja las interacciones
+        BodegaController bodegaController = new BodegaController(createBodegaUseCase, bodegaService);
+
+        // Mostrar menú de gestión de bodegas
+        bodegaController.tabla_Bodega();
+    }// GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton16ActionPerformed
         // detalles pedidos
-    }//GEN-LAST:event_jButton16ActionPerformed
+    }// GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton17ActionPerformed
         // sucursal
-    }//GEN-LAST:event_jButton17ActionPerformed
+    }// GEN-LAST:event_jButton17ActionPerformed
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton18ActionPerformed
         // productoproveedor
-    }//GEN-LAST:event_jButton18ActionPerformed
+    }// GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         // categorias
@@ -523,7 +551,8 @@ public class CrudsRepository extends javax.swing.JPanel {
         CreateInventarioUseCase createInventarioUseCase = new CreateInventarioUseCase(inventarioService);
 
         // Crear el controlador de inventario
-        InventarioController inventarioController = new InventarioController(createInventarioUseCase, inventarioService);
+        InventarioController inventarioController = new InventarioController(createInventarioUseCase,
+                inventarioService);
 
         // Mostrar el menú de gestión de inventario
         inventarioController.tabla_Inventario();
