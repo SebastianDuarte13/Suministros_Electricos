@@ -2,6 +2,7 @@ package com.electrishop.detallesventas.infrastructure.out;
 
 import com.electrishop.detallesventas.domain.entity.DetallesVentas;
 import com.electrishop.detallesventas.domain.service.DetallesVentasService;
+import com.electrishop.infrastructure.config.DatabaseConfig;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,13 +10,11 @@ import java.sql.ResultSet;
 
 public class DetallesVentasRepository implements DetallesVentasService {
 
-    private Connection getConnection() throws Exception {
-        return com.electrishop.infrastructure.config.DatabaseConfig.getConnection();
-    }
+ 
 
     @Override
     public void addDetallesVentas(DetallesVentas detallesVentas) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "INSERT INTO detalles_ventas (id_venta, id_producto, cantidad_productos, subprecio, descuento, total) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, detallesVentas.getId_venta());
@@ -32,7 +31,7 @@ public class DetallesVentasRepository implements DetallesVentasService {
 
     @Override
     public DetallesVentas findDetallesVentasById(int id_detalle_venta) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "SELECT * FROM detalles_ventas WHERE id_detalle_venta = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id_detalle_venta);
@@ -55,7 +54,7 @@ public class DetallesVentasRepository implements DetallesVentasService {
 
     @Override
     public void updateDetallesVentas(DetallesVentas detallesVentas) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "UPDATE detalles_ventas SET id_venta = ?, id_producto = ?, cantidad_productos = ?, subprecio = ?, descuento = ?, total = ? WHERE id_detalle_venta = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, detallesVentas.getId_venta());
@@ -76,7 +75,7 @@ public class DetallesVentasRepository implements DetallesVentasService {
 
     @Override
     public void deleteDetallesVentas(int id_detalle_venta) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "DELETE FROM detalles_ventas WHERE id_detalle_venta = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id_detalle_venta);

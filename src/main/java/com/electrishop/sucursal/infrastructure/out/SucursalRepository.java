@@ -1,5 +1,6 @@
 package com.electrishop.sucursal.infrastructure.out;
 
+import com.electrishop.infrastructure.config.DatabaseConfig;
 import com.electrishop.sucursal.domain.entity.Sucursal;
 import com.electrishop.sucursal.domain.service.SucursalService;
 
@@ -9,13 +10,11 @@ import java.sql.ResultSet;
 
 public class SucursalRepository implements SucursalService {
 
-    private Connection getConnection() throws Exception {
-        return com.electrishop.infrastructure.config.DatabaseConfig.getConnection();
-    }
+    
 
     @Override
     public void addSucursal(Sucursal sucursal) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "INSERT INTO sucursal (nombre, direccion, telefono, id_ciudad, id_producto) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, sucursal.getNombre());
@@ -31,7 +30,7 @@ public class SucursalRepository implements SucursalService {
 
     @Override
     public Sucursal findSucursalById(int id_sucursal) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "SELECT * FROM sucursal WHERE id_sucursal = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id_sucursal);
@@ -54,7 +53,7 @@ public class SucursalRepository implements SucursalService {
 
     @Override
     public void updateSucursal(Sucursal sucursal) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "UPDATE sucursal SET nombre = ?, direccion = ?, telefono = ?, id_ciudad = ?, id_producto = ? WHERE id_sucursal = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, sucursal.getNombre());
@@ -71,7 +70,7 @@ public class SucursalRepository implements SucursalService {
 
     @Override
     public void deleteSucursal(int id_sucursal) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "DELETE FROM sucursal WHERE id_sucursal = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id_sucursal);

@@ -48,3 +48,26 @@ Este proyecto tiene como objetivo principal el desarrollo de un sistema de gesti
 # Esta es la base de datos realizada
 
 ![Database_Proyect](/src/main/resources/images/database_proyect.jpg)
+
+## Conexiòn a la base de datos
+
+1) entra a package com.electrishop.infrastructure.config; ahi encontraras un archivo llamado DatabaseConfig el cual tendras que implementar este codigo pero conviando las variables por las tuyas que necesites
+
+```java
+public class DatabaseConfig {
+    private static final String URL = "jdbc:mysql://localhost:3306/electrishop";
+        private static final String USER = "el user por defecto es root";
+        private static final String PASSWORD = "tu clave de la base de datos";
+    
+        public static Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        }
+}
+```
+
+
+
+# Explicacion del trabajo
+
+es una aplicacion paea uso empresarial el cual permite agregar distintos tipor de productos con su respectivas tablas y divisiones para un uso mas comodo y profecional permite realizar ventas que generan una factura para entregarsela a nuestros clientes, tambien nos permite llevar el control de todo lo que entra y sale, este trabajo fue aplicado con las mejores tecnicas de programacion como lo es la arquitectura hexagonal y vertical slicing para que ocualquier persona se le facilite la comprencion del codigo, ya que tambien se le implementaron comentarios a los distintos archivos. Espero te funcione este trabajo y deberias dejamelo para saber en que mejorar 
+

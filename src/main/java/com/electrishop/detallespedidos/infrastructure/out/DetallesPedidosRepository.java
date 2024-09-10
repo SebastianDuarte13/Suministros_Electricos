@@ -2,6 +2,7 @@ package com.electrishop.detallespedidos.infrastructure.out;
 
 import com.electrishop.detallespedidos.domain.entity.DetallesPedidos;
 import com.electrishop.detallespedidos.domain.service.DetallesPedidosService;
+import com.electrishop.infrastructure.config.DatabaseConfig;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,13 +10,10 @@ import java.sql.ResultSet;
 
 public class DetallesPedidosRepository implements DetallesPedidosService {
 
-    private Connection getConnection() throws Exception {
-        return com.electrishop.infrastructure.config.DatabaseConfig.getConnection();
-    }
 
     @Override
     public void addDetallesPedidos(DetallesPedidos detallesPedidos) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "INSERT INTO detalles_pedidos (id_pedido, id_producto, cantidad_detalle_pedido, descuento, precio_detalle_pedido) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, detallesPedidos.getId_pedido());
@@ -31,8 +29,8 @@ public class DetallesPedidosRepository implements DetallesPedidosService {
 
     @Override
     public DetallesPedidos findDetallesPedidosById(int id_detalle_pedido) {
-        try (Connection connection = getConnection()) {
-            String sql = "SELECT * FROM detalles_pedidos WHERE id_detalle_pedido = ?";
+        try (Connection connection = DatabaseConfig.getConnection()) {
+            String sql = "SELECT id_pedido, id_producto, cantidad_detalle_pedido, descuento, precio_detalle_pedido  FROM detalles_pedidos WHERE id_detalle_pedido = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id_detalle_pedido);
             ResultSet rs = stmt.executeQuery();
@@ -54,7 +52,7 @@ public class DetallesPedidosRepository implements DetallesPedidosService {
 
     @Override
     public void updateDetallesPedidos(DetallesPedidos detallesPedidos) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "UPDATE detalles_pedidos SET id_pedido = ?, id_producto = ?, cantidad_detalle_pedido = ?, descuento = ?, precio_detalle_pedido = ? WHERE id_detalle_pedido = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, detallesPedidos.getId_pedido());
@@ -71,7 +69,7 @@ public class DetallesPedidosRepository implements DetallesPedidosService {
 
     @Override
     public void deleteDetallesPedidos(int id_detalle_pedido) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "DELETE FROM detalles_pedidos WHERE id_detalle_pedido = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id_detalle_pedido);

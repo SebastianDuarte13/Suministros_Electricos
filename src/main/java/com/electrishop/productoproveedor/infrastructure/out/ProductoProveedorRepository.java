@@ -1,5 +1,6 @@
 package com.electrishop.productoproveedor.infrastructure.out;
 
+import com.electrishop.infrastructure.config.DatabaseConfig;
 import com.electrishop.productoproveedor.domain.entity.ProductoProveedor;
 import com.electrishop.productoproveedor.domain.service.ProductoProveedorService;
 
@@ -9,13 +10,10 @@ import java.sql.ResultSet;
 
 public class ProductoProveedorRepository implements ProductoProveedorService {
 
-    private Connection getConnection() throws Exception {
-        return com.electrishop.infrastructure.config.DatabaseConfig.getConnection();
-    }
 
     @Override
     public void addProductoProveedor(ProductoProveedor productoProveedor) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "INSERT INTO productoproveedor (id_producto, id_proveedor) VALUES (?, ?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, productoProveedor.getId_producto());
@@ -28,7 +26,7 @@ public class ProductoProveedorRepository implements ProductoProveedorService {
 
     @Override
     public ProductoProveedor findProductoProveedor(int id_producto, int id_proveedor) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "SELECT * FROM productoproveedor WHERE id_producto = ? AND id_proveedor = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id_producto);
@@ -49,7 +47,7 @@ public class ProductoProveedorRepository implements ProductoProveedorService {
 
     @Override
     public void deleteProductoProveedor(int id_producto, int id_proveedor) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = DatabaseConfig.getConnection()) {
             String sql = "DELETE FROM productoproveedor WHERE id_producto = ? AND id_proveedor = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id_producto);
