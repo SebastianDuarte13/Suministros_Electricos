@@ -12,29 +12,29 @@ USE electrishop;
 -- Crear tabla categorias
 CREATE TABLE categorias (
   id_categoria INT PRIMARY KEY AUTO_INCREMENT,
-  nombre_categoria VARCHAR(50) NOT NULL
+  nombre_categoria VARCHAR(50)
 );
 
 -- Crear tabla pais
 CREATE TABLE pais (
   id_pais INT PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(50) NOT NULL
+  nombre VARCHAR(50)
 );
 
 -- Crear tabla direccioncliente
 CREATE TABLE direccioncliente (
   id_direccion INT PRIMARY KEY AUTO_INCREMENT,
-  direccion VARCHAR(50) NOT NULL
+  direccion VARCHAR(50)
 );
 
 -- Crear tabla proveedores
 CREATE TABLE proveedores (
   id_proveedor INT PRIMARY KEY AUTO_INCREMENT,
-  nombre_proveedor VARCHAR(60) NOT NULL,
-  apellido_proveedor VARCHAR(60) NOT NULL,
-  email_proveedor VARCHAR(100) NOT NULL,
-  telefono_proveedor VARCHAR(15) NOT NULL,
-  direccion_proveedor TEXT NOT NULL
+  nombre_proveedor VARCHAR(60),
+  apellido_proveedor VARCHAR(60),
+  email_proveedor VARCHAR(100),
+  telefono_proveedor VARCHAR(15),
+  direccion_proveedor TEXT
 );
 
 --          TABLAS SECUNDARIAS          --
@@ -42,10 +42,10 @@ CREATE TABLE proveedores (
 -- Crear tabla clientes
 CREATE TABLE clientes (
   id_cliente INT PRIMARY KEY AUTO_INCREMENT,
-  nombre_cliente VARCHAR(60) NOT NULL,
-  apellido_cliente VARCHAR(60) NOT NULL,
-  email_cliente VARCHAR(100) NOT NULL,
-  telefono_cliente VARCHAR(15) NOT NULL,
+  nombre_cliente VARCHAR(60),
+  apellido_cliente VARCHAR(60),
+  email_cliente VARCHAR(100),
+  telefono_cliente VARCHAR(15),
   id_direccioncliente INT,
   FOREIGN KEY (id_direccioncliente) REFERENCES direccioncliente(id_direccion)
 );
@@ -53,9 +53,9 @@ CREATE TABLE clientes (
 -- Crear tabla productos
 CREATE TABLE productos (
   id_producto INT PRIMARY KEY AUTO_INCREMENT,
-  nombre_producto VARCHAR(100) NOT NULL,
-  descripcion_producto TEXT NOT NULL,
-  precio_producto DECIMAL(10, 2) NOT NULL,
+  nombre_producto VARCHAR(100),
+  descripcion_producto TEXT,
+  precio_producto DECIMAL(10, 2),
   id_categoria INT,
   FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
 );
@@ -63,7 +63,7 @@ CREATE TABLE productos (
 -- Crear tabla ciudad
 CREATE TABLE ciudad (
   id_ciudad INT PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(50) NOT NULL,
+  nombre VARCHAR(50),
   id_pais INT,
   FOREIGN KEY (id_pais) REFERENCES pais(id_pais)
 );
@@ -72,8 +72,8 @@ CREATE TABLE ciudad (
 CREATE TABLE compra (
   id_compra INT PRIMARY KEY AUTO_INCREMENT,
   id_proveedor INT,
-  fecha_compra DATE NOT NULL,
-  precio_compra INT NOT NULL,
+  fecha_compra DATE,
+  precio_compra INT,
   FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)
 );
 
@@ -82,10 +82,10 @@ CREATE TABLE detalles_compra (
   id_detalles_compra INT PRIMARY KEY AUTO_INCREMENT,
   id_compra INT,
   id_producto INT,
-  nombre_compra VARCHAR(50) NOT NULL,
-  detalles VARCHAR(100) NOT NULL,
-  cantidad INT NOT NULL,
-  precio_unidad INT NOT NULL,
+  nombre_compra VARCHAR(50),
+  detalles VARCHAR(100),
+  cantidad INT,
+  precio_unidad INT,
   FOREIGN KEY (id_compra) REFERENCES compra(id_compra),
   FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
@@ -94,9 +94,9 @@ CREATE TABLE detalles_compra (
 CREATE TABLE inventario (
   id_inventario INT PRIMARY KEY AUTO_INCREMENT,
   id_producto INT,
-  cantidad_inventario INT NOT NULL,
-  fecha_ingreso DATETIME NOT NULL,
-  fecha_actualizacion DATETIME NOT NULL,
+  cantidad_inventario INT,
+  fecha_ingreso DATETIME,
+  fecha_actualizacion DATETIME,
   FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
 
@@ -104,7 +104,7 @@ CREATE TABLE inventario (
 CREATE TABLE ventas (
   id_venta INT PRIMARY KEY AUTO_INCREMENT,
   id_cliente INT,
-  fecha_venta DATETIME NOT NULL,
+  fecha_venta DATETIME,
   FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 );
 
@@ -113,10 +113,10 @@ CREATE TABLE detalles_ventas (
   id_detalle_venta INT PRIMARY KEY AUTO_INCREMENT,
   id_venta INT,
   id_producto INT,
-  cantidad_productos INT NOT NULL,
-  subprecio DECIMAL(10, 2) NOT NULL,
-  descuento INT NOT NULL,
-  total DECIMAL(10, 2) NOT NULL,
+  cantidad_productos INT,
+  subprecio DECIMAL(10, 2),
+  descuento INT,
+  total DECIMAL(10, 2),
   FOREIGN KEY (id_venta) REFERENCES ventas(id_venta),
   FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
@@ -125,8 +125,8 @@ CREATE TABLE detalles_ventas (
 CREATE TABLE pedidos (
   id_pedido INT PRIMARY KEY AUTO_INCREMENT,
   id_cliente INT,
-  fecha_pedido DATETIME NOT NULL,
-  estado_pedido VARCHAR(20) NOT NULL,
+  fecha_pedido DATETIME,
+  estado_pedido VARCHAR(20),
   FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 );
 
@@ -135,9 +135,9 @@ CREATE TABLE detalles_pedidos (
   id_detalle_pedido INT PRIMARY KEY AUTO_INCREMENT,
   id_pedido INT,
   id_producto INT,
-  cantidad_detalle_pedido INT NOT NULL,
-  descuento INT NOT NULL,
-  precio_detalle_pedido DECIMAL(10, 2) NOT NULL,
+  cantidad_detalle_pedido INT,
+  descuento INT,
+  precio_detalle_pedido DECIMAL(10, 2),
   FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
   FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
@@ -152,9 +152,9 @@ CREATE TABLE bodega (
 -- Crear tabla sucursal
 CREATE TABLE sucursal (
   id_sucursal INT PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(50) NOT NULL,
-  direccion VARCHAR(30) NOT NULL,
-  telefono VARCHAR(20) NOT NULL,
+  nombre VARCHAR(50),
+  direccion VARCHAR(30),
+  telefono VARCHAR(20),
   id_ciudad INT,
   id_producto INT,
   FOREIGN KEY (id_ciudad) REFERENCES ciudad(id_ciudad),
