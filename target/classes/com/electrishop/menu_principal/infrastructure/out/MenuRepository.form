@@ -152,7 +152,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Bell MT" size="14" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Modo Dios"/>
+        <Property name="text" type="java.lang.String" value="Modo CRUD"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
