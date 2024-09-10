@@ -8,10 +8,15 @@ import javax.swing.JFrame;
 
 import com.electrishop.menu_cuds.infrastructure.out.CrudsRepository;
 
-// importaaciones genetar facturas
+// importaaciones generar facturas
 import com.electrishop.factura.domain.service.FacturaService;
 import com.electrishop.factura.infrastructure.out.FacturaRepository;
 import com.electrishop.factura.infrastructure.in.FacturaController;
+
+//importaciones Historial Ventas
+import com.electrishop.historialventas.domain.service.HistorialVentasService;
+import com.electrishop.historialventas.infrastructure.out.HistorialVentasRepository;
+import com.electrishop.historialventas.infrastructure.in.HistorialVentasController;
 
 /**
  *
@@ -185,6 +190,16 @@ public class MenuRepository extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
         // HISTORIAL VENTAS
+        // Inicializa el repositorio de facturas
+        HistorialVentasService historialVentasService = new HistorialVentasRepository();
+
+        // Inicializa el caso de uso (en este caso, no es necesario hacer nada con él)
+
+        // Inicializa el controlador con el servicio de facturas
+        HistorialVentasController historialVentasController = new HistorialVentasController(historialVentasService);
+
+        // Muestra el menú de gestión de Historial
+        historialVentasController.tabla_Historial_ventas();
     }// GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
