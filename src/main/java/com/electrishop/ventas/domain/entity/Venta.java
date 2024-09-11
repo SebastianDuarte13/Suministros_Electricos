@@ -3,16 +3,18 @@ package com.electrishop.ventas.domain.entity;
 import java.sql.Date;
 
 public class Venta {
+    // agragamos las variables queexisten en la base de datos
     private int id_venta;
     private int id_cliente;
     private Date fecha_venta;
 
+    // agregamos un constructor
     public Venta(int id_cliente, Date fecha_venta) {
         this.id_cliente = id_cliente;
         this.fecha_venta = fecha_venta;
     }
 
-    // Getters y setters
+    // hacemos los metodos getter y setter
     public int getId_venta() {
         return id_venta;
     }

@@ -1,6 +1,7 @@
 package com.electrishop.clientes.domain.entity;
 
 public class Clientes {
+    // agragamos las variables queexisten en la base de datos
     private int id_cliente;
     private String nombre_cliente;
     private String apellido_cliente;
@@ -8,6 +9,7 @@ public class Clientes {
     private String telefono_cliente;
     private int id_direccioncliente;
 
+    // agregamos un constructor
     public Clientes(String nombre_cliente, String apellido_cliente, String email_cliente, String telefono_cliente,
             int id_direccioncliente) {
         this.nombre_cliente = nombre_cliente;
@@ -17,6 +19,7 @@ public class Clientes {
         this.id_direccioncliente = id_direccioncliente;
     }
 
+    // hacemos los metodos getter y setter
     public int getId_cliente() {
         return id_cliente;
     }

@@ -1,6 +1,7 @@
 package com.electrishop.sucursal.domain.entity;
 
 public class Sucursal {
+    // agragamos las variables queexisten en la base de datos
     private int id_sucursal;
     private String nombre;
     private String direccion;

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Reportes {
+    // agragamos las variables queexisten en la base de datos
     // Clientes
     private int id_cliente;
     private String nombre_cliente;
@@ -23,9 +24,10 @@ public class Reportes {
     private BigDecimal precio_producto;
     private int id_categoria;
 
+    // agregamos un constructor
     public Reportes(int id_cliente, String nombre_cliente, String apellido_cliente, String email_cliente,
-                   String telefono_cliente, int id_direccioncliente, int id_venta, Date fecha_venta, int id_producto,
-                   String nombre_producto, String descripcion_producto, BigDecimal precio_producto, int id_categoria) {
+            String telefono_cliente, int id_direccioncliente, int id_venta, Date fecha_venta, int id_producto,
+            String nombre_producto, String descripcion_producto, BigDecimal precio_producto, int id_categoria) {
         this.id_cliente = id_cliente;
         this.nombre_cliente = nombre_cliente;
         this.apellido_cliente = apellido_cliente;
@@ -41,7 +43,7 @@ public class Reportes {
         this.id_categoria = id_categoria;
     }
 
-    // Getters and Setters
+    // hacemos los metodos getter y setter
     public int getId_cliente() {
         return id_cliente;
     }

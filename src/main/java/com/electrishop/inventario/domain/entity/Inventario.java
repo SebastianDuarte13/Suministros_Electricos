@@ -3,12 +3,14 @@ package com.electrishop.inventario.domain.entity;
 import java.sql.Date;
 
 public class Inventario {
+    // agragamos las variables queexisten en la base de datos
     private int id_inventario;
     private int id_producto;
     private int cantidad_inventario;
     private Date fecha_ingreso;
     private Date fecha_actualizacion;
 
+    // agregamos un constructor
     public Inventario(int id_producto, int cantidad_inventario, Date fecha_ingreso, Date fecha_actualizacion) {
         this.id_producto = id_producto;
         this.cantidad_inventario = cantidad_inventario;
@@ -16,7 +18,7 @@ public class Inventario {
         this.fecha_actualizacion = fecha_actualizacion;
     }
 
-    // Getters y setters
+    // hacemos los metodos getter y setter
     public int getId_inventario() {
         return id_inventario;
     }

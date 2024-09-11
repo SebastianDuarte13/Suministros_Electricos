@@ -1,6 +1,7 @@
 package com.electrishop.proveedor.domain.entity;
 
 public class Proveedores {
+    // agragamos las variables queexisten en la base de datos
     private int id_proveedor;
     private String nombre_proveedor;
     private String apellido_proveedor;
@@ -8,6 +9,7 @@ public class Proveedores {
     private String telefono_proveedor;
     private String direccion_proveedor;
 
+    // agregamos un constructor
     public Proveedores(String nombre_proveedor, String apellido_proveedor, String email_proveedor,
             String telefono_proveedor, String direccion_proveedor) {
         this.nombre_proveedor = nombre_proveedor;
@@ -17,6 +19,7 @@ public class Proveedores {
         this.direccion_proveedor = direccion_proveedor;
     }
 
+    // hacemos los metodos getter y setter
     public int getId_proveedor() {
         return id_proveedor;
     }
@@ -64,9 +67,5 @@ public class Proveedores {
     public void setDireccion_proveedor(String direccion_proveedor) {
         this.direccion_proveedor = direccion_proveedor;
     }
-
-    
-
-    
 
 }
